@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { ObjectType, Field, ID, Float } from '@nestjs/graphql';
 import { MaxLength, Min } from 'class-validator';
 
@@ -36,4 +42,10 @@ export class Invoice {
   @Field(() => Float, { nullable: false })
   @Min(0)
   total: number;
+
+  @UpdateDateColumn({
+    type: 'timestamptz',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
+  updated: Date;
 }

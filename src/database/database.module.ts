@@ -18,8 +18,9 @@ import config from '../config';
           database,
           password,
           port,
-          synchronize: true,
+          synchronize: false,
           autoLoadEntities: true,
+          logging: true,
         };
       },
     }),
